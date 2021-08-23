@@ -6,7 +6,15 @@ import "core-js/stable"
 
 import recipeView from "./views/recipeView.js";
 import searchView from "./views/searchView.js";
+import resultView from './views/resultView.js';
+import bookmarksView from './views/bookmarksView.js';
+import paginationView from "./views/paginationView.js"
 import * as model from "./model.js";
+
+
+// if(module.hot){
+//   module.hot.accept();
+// }
 
 
 
@@ -24,166 +32,7 @@ const timeout = function (s) {
 ///////////////////////////////////////
 
 
-let markup=`<div class="main__display">
-<div class="today">
-    <div class="today__max">
-        <svg class="today__max--icon">
-            <use xlink:href="/src/images/sprite.svg#icon-Clear"></use>
-        </svg>
-        <div class="today__max--main">
-            <p class="max-temp">${maxTemp}
-                <svg class="max-temp__icon">
-                    <use xlink:href="/src/images/sprite.svg#icon-degrees-celcius"></use>
-                </svg>
-            </p>
-            <p class="min-temp">${minTemp}
-                <svg class="min-temp__icon">
-                    <use xlink:href="/src/images/sprite.svg#icon-degrees-celcius"></use>
-                </svg>
-            </p>
-        </div>
-    </div>
-    <div class="today__more">
-        <p>it is ${condition} today with:</p>
 
-        <div class="extra">
-            <div class="extra__text">
-                <svg class="extra__icon">
-                    <use xlink:href="/src/images/sprite.svg#icon-windmill"></use>
-                </svg>
-
-                <p class="extra__text--main">
-                    <span>${windSpeed}</span>Km/h
-                    <span>${windDirection}</span>
-                </p>
-
-            </div>
-
-
-            <div class="extra__text">
-                <svg class="extra__icon">
-                    <use xlink:href="/src/images/sprite.svg#icon-rain-drops"></use>
-                </svg>
-
-                <p class="extra__text--main">
-                    <span>${humidity}</span>%
-                </p>
-
-            </div>
-        </div>
-    </div>
-    
-</div>
-<div class="info">
-    <div class="info__name"></div>
-    <div class="info__save"></div>
-</div>
-
-<div class="bottom">
-    <div class="place">
-        <p class="place__first"><span class="city">${city}</span>,<span class="province">${province}</span></p>
-        <p class="place__second"><span class='country'>${country}</span></p>
-    </div>
-
-    <svg class="bottom__icon">
-        <use xlink:href="/src/images/sprite.svg#icon-Bookmark-save"></use>
-    </svg>
-</div>
-
-</div>
-
-<div class="following">
-
-<div class="day">
-    <p class="day__date">Tomorrow</p>
-    <div class="day__main">
-        <svg class="day__main--icon">
-            <use xlink:href="/src/images/sprite.svg#icon-Clear"></use>
-        </svg>
-        <p class="day__main--text">Clear</p>
-    </div>
-    
-    <div class="maxmin">
-        <p class="max-temp">24
-            <svg class="max-temp__icon">
-                <use xlink:href="/src/images/sprite.svg#icon-degrees-celcius"></use>
-            </svg>
-        </p>
-        <p class="min-temp">14
-            <svg class="min-temp__icon">
-                <use xlink:href="/src/images/sprite.svg#icon-degrees-celcius"></use>
-            </svg>
-        </p>
-    </div>
-</div>
-
-<div class="day">
-    <p class="day__date">Tue 22 Jun</p>
-    <div class="day__main">
-        <svg class="day__main--icon">
-            <use xlink:href="/src/images/sprite.svg#icon-Clear"></use>
-        </svg>
-        <p class="day__main--text">Cloudy</p>
-    </div>
-    
-    <div class="maxmin">
-        <p class="max-temp">24
-            <svg class="max-temp__icon">
-                <use xlink:href="/src/images/sprite.svg#icon-degrees-celcius"></use>
-            </svg>
-        </p>
-        <p class="min-temp">14
-            <svg class="min-temp__icon">
-                <use xlink:href="/src/images/sprite.svg#icon-degrees-celcius"></use>
-            </svg>
-        </p>
-    </div>
-</div>
-<div class="day">
-    <p class="day__date">Wed 23 Jun</p>
-    <div class="day__main">
-        <svg class="day__main--icon">
-            <use xlink:href="/src/images/sprite.svg#icon-Clear"></use>
-        </svg>
-        <p class="day__main--text">Showers</p>
-    </div>
-    <div class="maxmin">
-        <p class="max-temp">24
-            <svg class="max-temp__icon">
-                <use xlink:href="/src/images/sprite.svg#icon-degrees-celcius"></use>
-            </svg>
-        </p>
-        <p class="min-temp">14
-            <svg class="min-temp__icon">
-                <use xlink:href="/src/images/sprite.svg#icon-degrees-celcius"></use>
-            </svg>
-        </p>
-    </div>
-</div>
-<div class="day">
-    <p class="day__date">Thur 24 Jun</p>
-    <div class="day__main">
-        <svg class="day__main--icon">
-            <use xlink:href="/src/images/sprite.svg#icon-Clear"></use>
-        </svg>
-        <p class="day__main--text">Clear</p>
-    </div>
-    
-    <div class="maxmin">
-        <p class="max-temp">24
-            <svg class="max-temp__icon">
-                <use xlink:href="/src/images/sprite.svg#icon-degrees-celcius"></use>
-            </svg>
-        </p>
-        <p class="min-temp">14
-            <svg class="min-temp__icon">
-                <use xlink:href="/src/images/sprite.svg#icon-degrees-celcius"></use>
-            </svg>
-        </p>
-    </div>
-</div>
-
-</div>`
 
 
 const showRecipe=async ()=>{
@@ -200,6 +49,8 @@ const showRecipe=async ()=>{
     // 2) RENDERING RECIPE
     recipeView.render(model.state.recipe)
 
+    
+    // controlServings()
 
   } catch (error) {
     recipeView.renderError();
@@ -210,6 +61,8 @@ const showRecipe=async ()=>{
 
 const controlSearchResults=async function(){
   try{
+
+    resultView.renderSpinner();
     // 1) Get Search Query
     const query=searchView.getQuery();
     if (!query) return;
@@ -218,35 +71,64 @@ const controlSearchResults=async function(){
     await model.loadSearchResult(query);
 
     // 3) Render the result
-    console.log(model.state.search);
+  
+    // resultView.render(model.state.search.results)
+    resultView.render(model.getSearchResultPage())
+    // console.log(model.getSearchResultPage())
 
-    // // 4) Clear the input
-    // searchView.clearInput()
+    // 4) Render the initial pagination
+    paginationView.render(model.state.search)
+
+
 
   }catch(err){
     console.log(err);
   }
 }
 
+const controllPagination=function(goToPage){
+  // 1) Render NEW Result
+  resultView.render(model.getSearchResultPage(goToPage))
+  // 2) Render the NEW pagination
+  paginationView.render(model.state.search)
+}
+
+const controlServings=function(newServings){
+  // Update the servings (in state)
+  model.updateServings(newServings);
+
+  // Update the recipe view
+
+  // recipeView.render(model.state.recipe)
+  recipeView.update(model.state.recipe)
+}
+
+const controlAddBookMark=function(){
+  // Add/Remove Bookmark
+  if(!model.state.recipe.bookMarked){
+    model.addBookMark(model.state.recipe);
+  }else{
+    model.deleteBookMark(model.state.recipe.id);
+  }
+  
+  // Update the recipe view
+  recipeView.update(model.state.recipe)
+
+  // Render the bookmark
+  bookmarksView.render(model.state.bookmarks)
+
+}
+
 const init=function(){
   recipeView.addHandlerRender(showRecipe);
-  searchView.addHandlerSearch(controlSearchResults)
+  recipeView.addHandlerUpdateServings(controlServings);
+  recipeView.addHandlerAddBookmark(controlAddBookMark)
+  searchView.addHandlerSearch(controlSearchResults);
+  paginationView.addHandlerClick(controllPagination);
+
 }
 
 
 init();
 
 
-
-
-// window.addEventListener("hashchange",showRecipe)
-// window.addEventListener("load",showRecipe)
-
-// ["hashchange","load"].forEach(ev=>window.addEventListener(ev,showRecipe))
-
-// class Person{
-//   #greeting
-//   constructor(name){
-//     this.name=name
-//   }
-// }
