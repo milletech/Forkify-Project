@@ -12830,8 +12830,8 @@ var RecipeView = /*#__PURE__*/function (_View) {
     value: function addHandlerUpdateServings(handler) {
       this._parentElement.addEventListener("click", function (e) {
         var btn = e.target.closest(".btn--update-servings");
-        if (!btn) return;
-        console.log(btn);
+        if (!btn) return; // console.log(btn);
+
         var updateTo = +btn.dataset.updateTo;
         if (updateTo > 0) handler(updateTo);
       });
@@ -12848,7 +12848,7 @@ var RecipeView = /*#__PURE__*/function (_View) {
   }, {
     key: "_generateMarkUp",
     value: function _generateMarkUp() {
-      return "\n        <figure class=\"recipe__fig\">\n          <img src=\"".concat(this._data.image, "\" alt=\"").concat(this._data.title, "\" class=\"recipe__img\" />\n          <h1 class=\"recipe__title\">\n            <span>").concat(this._data.title, "</span>\n          </h1>\n        </figure>\n    \n        <div class=\"recipe__details\">\n          <div class=\"recipe__info\">\n            <svg class=\"recipe__info-icon\">\n              <use href=\"").concat(_icons.default, "#icon-clock\"></use>\n            </svg>\n            <span class=\"recipe__info-data recipe__info-data--minutes\">").concat(this._data.cookingTime, "</span>\n            <span class=\"recipe__info-text\">minutes</span>\n          </div>\n          <div class=\"recipe__info\">\n            <svg class=\"recipe__info-icon\">\n              <use href=\"").concat(_icons.default, "#icon-users\"></use>\n            </svg>\n            <span class=\"recipe__info-data recipe__info-data--people\">").concat(this._data.servings, "</span>\n            <span class=\"recipe__info-text\">servings</span>\n    \n            <div class=\"recipe__info-buttons\">\n              <button class=\"btn--tiny btn--update-servings\" data-update-to=\"").concat(this._data.servings - 1, "\">\n                <svg>\n                  <use href=\"").concat(_icons.default, "#icon-minus-circle\"></use>\n                </svg>\n              </button>\n              <button class=\"btn--tiny btn--update-servings\" data-update-to=\"").concat(this._data.servings + 1, "\">\n                <svg>\n                  <use href=\"").concat(_icons.default, "#icon-plus-circle\"></use>\n                </svg>\n              </button>\n            </div>\n          </div>\n    \n        <div class=\"recipe__user-generated\">\n        </div>\n        <button class=\"btn--round btn-bookmark\">\n          <svg class=\"\">\n            <use href=\"").concat(_icons.default, "#icon-bookmark").concat(this._data.bookMarked ? '-fill' : '', "\"></use>\n          </svg>\n        </button>\n      </div>\n    \n      <div class=\"recipe__ingredients\">\n        <h2 class=\"heading--2\">Recipe ingredients</h2>\n        <ul class=\"recipe__ingredient-list\">\n        ").concat(this._data.ingredients.map(function (ing) {
+      return "\n        <figure class=\"recipe__fig\">\n          <img src=\"".concat(this._data.image, "\" alt=\"").concat(this._data.title, "\" class=\"recipe__img\" />\n          <h1 class=\"recipe__title\">\n            <span>").concat(this._data.title, "</span>\n          </h1>\n        </figure>\n    \n        <div class=\"recipe__details\">\n          <div class=\"recipe__info\">\n            <svg class=\"recipe__info-icon\">\n              <use href=\"").concat(_icons.default, "#icon-clock\"></use>\n            </svg>\n            <span class=\"recipe__info-data recipe__info-data--minutes\">").concat(this._data.cookingTime, "</span>\n            <span class=\"recipe__info-text\">minutes</span>\n          </div>\n          <div class=\"recipe__info\">\n            <svg class=\"recipe__info-icon\">\n              <use href=\"").concat(_icons.default, "#icon-users\"></use>\n            </svg>\n            <span class=\"recipe__info-data recipe__info-data--people\">").concat(this._data.servings, "</span>\n            <span class=\"recipe__info-text\">servings</span>\n    \n            <div class=\"recipe__info-buttons\">\n              <button class=\"btn--tiny btn--update-servings\" data-update-to=\"").concat(this._data.servings - 1, "\">\n                <svg>\n                  <use href=\"").concat(_icons.default, "#icon-minus-circle\"></use>\n                </svg>\n              </button>\n              <button class=\"btn--tiny btn--update-servings\" data-update-to=\"").concat(this._data.servings + 1, "\">\n                <svg>\n                  <use href=\"").concat(_icons.default, "#icon-plus-circle\"></use>\n                </svg>\n              </button>\n            </div>\n          </div>\n    \n        <div class=\"recipe__user-generated ").concat(this._data.key ? '' : 'hidden', "\">\n          <svg>\n            <use href=\"").concat(_icons.default, "#icon-user\"></use>\n          </svg>\n        </div>\n        <button class=\"btn--round btn-bookmark\">\n          <svg class=\"\">\n            <use href=\"").concat(_icons.default, "#icon-bookmark").concat(this._data.bookMarked ? '-fill' : '', "\"></use>\n          </svg>\n        </button>\n      </div>\n    \n      <div class=\"recipe__ingredients\">\n        <h2 class=\"heading--2\">Recipe ingredients</h2>\n        <ul class=\"recipe__ingredient-list\">\n        ").concat(this._data.ingredients.map(function (ing) {
         return "\n            <li class=\"recipe__ingredient\">\n            <svg class=\"recipe__icon\">\n              <use href=\"".concat(_icons.default, "#icon-check\"></use>\n            </svg>\n            <div class=\"recipe__quantity\">").concat(ing.quantity ? new _fractional.Fraction(ing.quantity).toString() : "", "</div>\n            <div class=\"recipe__description\">\n              <span class=\"recipe__unit\">").concat(ing.unit, "</span>\n              ").concat(ing.description, "\n            </div>\n            </li>");
       }).join(""), "\n        </ul>\n      </div>\n    \n      <div class=\"recipe__directions\">\n        <h2 class=\"heading--2\">How to cook it</h2>\n        <p class=\"recipe__directions-text\">\n          This recipe was carefully designed and tested by\n          <span class=\"recipe__publisher\">").concat(this._data.publisher, "</span>. Please check out\n          directions at their website.\n        </p>\n        <a\n          class=\"btn--small recipe__btn\"\n          href=\"").concat(this._data.sourceUrl, "\"\n          target=\"_blank\"\n        >\n          <span>Directions</span>\n          <svg class=\"search__icon\">\n            <use href=\"").concat(_icons.default, "#icon-arrow-right\"></use>\n          </svg>\n        </a>\n      </div>");
     }
@@ -12982,7 +12982,7 @@ var resultView = /*#__PURE__*/function (_View) {
   }, {
     key: "_generateMarkUpPreview",
     value: function _generateMarkUpPreview(result) {
-      return "\n        <li class=\"preview\">\n            <a class=\"preview__link\" href=\"#".concat(result.id, "\">\n                <figure class=\"preview__fig\">\n                    <img src=\"").concat(result.image, "\" alt=\"").concat(result.title, "\" />\n                </figure>\n                <div class=\"preview__data\">\n                    <h4 class=\"preview__title\">").concat(result.title, "</h4>\n                    <p class=\"preview__publisher\">").concat(result.publisher, "</p>\n                </div>\n            </a>\n        </li>\n        ");
+      return "\n        <li class=\"preview\">\n            <a class=\"preview__link\" href=\"#".concat(result.id, "\">\n                <figure class=\"preview__fig\">\n                    <img src=\"").concat(result.image, "\" alt=\"").concat(result.title, "\" />\n                </figure>\n                <div class=\"preview__data\">\n                    <h4 class=\"preview__title\">").concat(result.title, "</h4>\n                    <p class=\"preview__publisher\">").concat(result.publisher, "</p>\n                    <div class=\"recipe__user-generated ").concat(result.key ? '' : 'hidden', "\">\n                        <svg>\n                            <use href=\"").concat(_icons.default, "#icon-user\"></use>\n                        </svg>\n                    </div>\n                </div>\n            </a>\n        </li>\n        ");
     }
   }]);
 
@@ -13054,6 +13054,11 @@ var BookmarksView = /*#__PURE__*/function (_View) {
   }
 
   _createClass(BookmarksView, [{
+    key: "addHandlerRender",
+    value: function addHandlerRender(handler) {
+      window.addEventListener("load", handler);
+    }
+  }, {
     key: "_generateMarkUp",
     value: function _generateMarkUp() {
       return this._data.map(this._generateMarkUpPreview).join("");
@@ -13061,7 +13066,7 @@ var BookmarksView = /*#__PURE__*/function (_View) {
   }, {
     key: "_generateMarkUpPreview",
     value: function _generateMarkUpPreview(result) {
-      return "\n        <li class=\"preview\">\n            <a class=\"preview__link\" href=\"#".concat(result.id, "\">\n                <figure class=\"preview__fig\">\n                    <img src=\"").concat(result.image, "\" alt=\"").concat(result.title, "\" />\n                </figure>\n                <div class=\"preview__data\">\n                    <h4 class=\"preview__title\">").concat(result.title, "</h4>\n                    <p class=\"preview__publisher\">").concat(result.publisher, "</p>\n                </div>\n            </a>\n        </li>\n        ");
+      return "\n        <li class=\"preview\">\n            <a class=\"preview__link\" href=\"#".concat(result.id, "\">\n                <figure class=\"preview__fig\">\n                    <img src=\"").concat(result.image, "\" alt=\"").concat(result.title, "\" />\n                </figure>\n                <div class=\"preview__data\">\n                    <h4 class=\"preview__title\">").concat(result.title, "</h4>\n                    <p class=\"preview__publisher\">").concat(result.publisher, "</p>\n                    <div class=\"recipe__user-generated ").concat(result.key ? '' : 'hidden', "\">\n                    <svg>\n                        <use href=\"").concat(_icons.default, "#icon-user\"></use>\n                    </svg>\n                </div>\n                </div>\n            </a>\n        </li>\n        ");
     }
   }]);
 
@@ -13069,6 +13074,129 @@ var BookmarksView = /*#__PURE__*/function (_View) {
 }(_View2.default);
 
 var _default = new BookmarksView();
+
+exports.default = _default;
+},{"../../img/icons.svg":"src/img/icons.svg","./View.js":"src/js/views/View.js"}],"src/js/views/addRecipeView.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _icons = _interopRequireDefault(require("../../img/icons.svg"));
+
+var _View2 = _interopRequireDefault(require("./View.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var addRecipeView = /*#__PURE__*/function (_View) {
+  _inherits(addRecipeView, _View);
+
+  var _super = _createSuper(addRecipeView);
+
+  function addRecipeView() {
+    var _this;
+
+    _classCallCheck(this, addRecipeView);
+
+    _this = _super.call(this);
+
+    _defineProperty(_assertThisInitialized(_this), "_parentElement", document.querySelector(".upload"));
+
+    _defineProperty(_assertThisInitialized(_this), "_message", "Recipe was successfully uploaded :)");
+
+    _defineProperty(_assertThisInitialized(_this), "_window", document.querySelector(".add-recipe-window"));
+
+    _defineProperty(_assertThisInitialized(_this), "_overlay", document.querySelector(".overlay"));
+
+    _defineProperty(_assertThisInitialized(_this), "_btnOpen", document.querySelector(".nav__btn--add-recipe"));
+
+    _defineProperty(_assertThisInitialized(_this), "_btnClose", document.querySelector(".btn--close-modal"));
+
+    _this._addHandlerShowWindow();
+
+    _this._addHandlerHideWindow();
+
+    return _this;
+  }
+
+  _createClass(addRecipeView, [{
+    key: "toggleWindow",
+    value: function toggleWindow() {
+      this._overlay.classList.toggle("hidden");
+
+      this._window.classList.toggle("hidden");
+    }
+  }, {
+    key: "_addHandlerShowWindow",
+    value: function _addHandlerShowWindow() {
+      this._btnOpen.addEventListener('click', this.toggleWindow.bind(this));
+    }
+  }, {
+    key: "_addHandlerHideWindow",
+    value: function _addHandlerHideWindow() {
+      this._btnClose.addEventListener('click', this.toggleWindow.bind(this));
+
+      this._overlay.addEventListener('click', this.toggleWindow.bind(this));
+    }
+  }, {
+    key: "addHandlerUpload",
+    value: function addHandlerUpload(handler) {
+      this._parentElement.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        var datArr = _toConsumableArray(new FormData(this));
+
+        var data = Object.fromEntries(datArr);
+        handler(data);
+      });
+    }
+  }, {
+    key: "_generateMarkUp",
+    value: function _generateMarkUp() {}
+  }]);
+
+  return addRecipeView;
+}(_View2.default);
+
+var _default = new addRecipeView();
 
 exports.default = _default;
 },{"../../img/icons.svg":"src/img/icons.svg","./View.js":"src/js/views/View.js"}],"src/js/views/paginationView.js":[function(require,module,exports) {
@@ -13136,8 +13264,8 @@ var PaginationView = /*#__PURE__*/function (_View) {
       this._parentElement.addEventListener("click", function (e) {
         var btn = e.target.closest(".btn--inline");
         if (!btn) return;
-        var goToPage = +btn.dataset.goto;
-        console.log(goToPage);
+        var goToPage = +btn.dataset.goto; // console.log(goToPage)
+
         handler(goToPage);
       });
     }
@@ -13145,8 +13273,8 @@ var PaginationView = /*#__PURE__*/function (_View) {
     key: "_generateMarkUp",
     value: function _generateMarkUp() {
       var numPages = Math.ceil(this._data.results.length / this._data.resultsPerPage);
-      var curPage = this._data.page;
-      console.log(numPages); // Page 1, and there are other Pages
+      var curPage = this._data.page; // console.log(numPages)
+      // Page 1, and there are other Pages
 
       if (curPage === 1 && numPages > 1) {
         return "\n            <button data-goto=\"".concat(curPage + 1, "\" class=\"btn--inline pagination__btn--next\">\n            <span>Page ").concat(curPage + 1, "</span>\n            <svg class=\"search__icon\">\n              <use href=\"").concat(_icons.default, "#icon-arrow-right\"></use>\n            </svg>\n          </button> \n            ");
@@ -13179,21 +13307,23 @@ exports.default = _default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.RES_PER_PAGE = exports.TIMEOUT_SEC = exports.API_URL = void 0;
+exports.KEY = exports.RES_PER_PAGE = exports.TIMEOUT_SEC = exports.API_URL = void 0;
 // All the varibles 
 var API_URL = "https://forkify-api.herokuapp.com/api/v2/recipes/";
 exports.API_URL = API_URL;
 var TIMEOUT_SEC = 10;
 exports.TIMEOUT_SEC = TIMEOUT_SEC;
-var RES_PER_PAGE = 5;
+var RES_PER_PAGE = 10;
 exports.RES_PER_PAGE = RES_PER_PAGE;
+var KEY = '20861751-6732-4c93-9ca2-4953e61c5668';
+exports.KEY = KEY;
 },{}],"src/js/helpers.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getJSON = void 0;
+exports.sendJSON = exports.getJSON = void 0;
 
 var _config = require("./config");
 
@@ -13261,21 +13391,96 @@ var getJSON = /*#__PURE__*/function () {
 }();
 
 exports.getJSON = getJSON;
+
+var sendJSON = /*#__PURE__*/function () {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(url, uploadData) {
+    var fetchPro, res, data;
+    return regeneratorRuntime.wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.prev = 0;
+            fetchPro = fetch(url, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify(uploadData)
+            });
+            _context2.next = 4;
+            return Promise.race([fetchPro, timeout(_config.TIMEOUT_SEC)]);
+
+          case 4:
+            res = _context2.sent;
+            _context2.next = 7;
+            return res.json();
+
+          case 7:
+            data = _context2.sent;
+
+            if (res.ok) {
+              _context2.next = 10;
+              break;
+            }
+
+            throw new Error("".concat(data.message, " ").concat(res.status));
+
+          case 10:
+            return _context2.abrupt("return", data);
+
+          case 13:
+            _context2.prev = 13;
+            _context2.t0 = _context2["catch"](0);
+            console.error("Took to long the request failed");
+            throw _context2.t0;
+
+          case 17:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2, null, [[0, 13]]);
+  }));
+
+  return function sendJSON(_x2, _x3) {
+    return _ref2.apply(this, arguments);
+  };
+}();
+
+exports.sendJSON = sendJSON;
 },{"./config":"src/js/config.js","regenerator-runtime":"node_modules/regenerator-runtime/runtime.js"}],"src/js/model.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.deleteBookMark = exports.addBookMark = exports.updateServings = exports.getSearchResultPage = exports.loadSearchResult = exports.loadRecipe = exports.state = void 0;
+exports.uploadRecipe = exports.deleteBookMark = exports.addBookMark = exports.updateServings = exports.getSearchResultPage = exports.loadSearchResult = exports.loadRecipe = exports.state = void 0;
 
 var _config = require("./config");
 
 var _helpers = require("./helpers");
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var state = {
   recipe: {},
@@ -13289,6 +13494,22 @@ var state = {
 };
 exports.state = state;
 
+var createRecipeObject = function createRecipeObject(data) {
+  // const recipe=data.data.recipe;
+  return _objectSpread({
+    id: data.id,
+    title: data.title,
+    publisher: data.publisher,
+    ingredients: data.ingredients,
+    image: data.image_url,
+    sourceUrl: data.source_url,
+    servings: data.servings,
+    cookingTime: data.cooking_time
+  }, data.key && {
+    key: data.key
+  });
+};
+
 var loadRecipe = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(id) {
     var data, recipe;
@@ -13298,22 +13519,22 @@ var loadRecipe = /*#__PURE__*/function () {
           case 0:
             _context.prev = 0;
             _context.next = 3;
-            return (0, _helpers.getJSON)("".concat(_config.API_URL).concat(id));
+            return (0, _helpers.getJSON)("".concat(_config.API_URL).concat(id, "?key=").concat(_config.KEY));
 
           case 3:
             data = _context.sent;
-            recipe = data.data.recipe;
-            console.log(recipe);
-            state.recipe = {
-              id: recipe.id,
-              title: recipe.title,
-              publisher: recipe.publisher,
-              ingredients: recipe.ingredients,
-              image: recipe.image_url,
-              sourceUrl: recipe.source_url,
-              servings: recipe.servings,
-              cookingTime: recipe.cooking_time
-            };
+            recipe = data.data.recipe; // console.log(recipe)
+
+            state.recipe = createRecipeObject(recipe); // state.recipe={
+            //     id:recipe.id,
+            //     title:recipe.title,
+            //     publisher:recipe.publisher,
+            //     ingredients:recipe.ingredients,
+            //     image:recipe.image_url,
+            //     sourceUrl:recipe.source_url,
+            //     servings:recipe.servings,
+            //     cookingTime:recipe.cooking_time
+            // };
 
             if (state.bookmarks.some(function (bookmark) {
               return bookmark.id === id;
@@ -13323,22 +13544,22 @@ var loadRecipe = /*#__PURE__*/function () {
               state.recipe.bookMarked = false;
             }
 
-            _context.next = 14;
+            _context.next = 13;
             break;
 
-          case 10:
-            _context.prev = 10;
+          case 9:
+            _context.prev = 9;
             _context.t0 = _context["catch"](0);
             // recipeView.renderError();
             console.log(_context.t0);
             throw _context.t0;
 
-          case 14:
+          case 13:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 10]]);
+    }, _callee, null, [[0, 9]]);
   }));
 
   return function loadRecipe(_x) {
@@ -13357,18 +13578,20 @@ var loadSearchResult = /*#__PURE__*/function () {
           case 0:
             _context2.prev = 0;
             _context2.next = 3;
-            return (0, _helpers.getJSON)("".concat(_config.API_URL, "?search=").concat(query));
+            return (0, _helpers.getJSON)("".concat(_config.API_URL, "?search=").concat(query, "&key=").concat(_config.KEY));
 
           case 3:
             data = _context2.sent;
             state.search.query = query;
             state.search.results = data.data.recipes.map(function (rec) {
-              return {
+              return _objectSpread({
                 id: rec.id,
                 title: rec.title,
                 publisher: rec.publisher,
                 image: rec.image_url
-              };
+              }, rec.key && {
+                key: rec.key
+              });
             });
             state.search.page = 1;
             _context2.next = 13;
@@ -13414,11 +13637,17 @@ var updateServings = function updateServings(newServings) {
 
 exports.updateServings = updateServings;
 
+var persistBookmarks = function persistBookmarks() {
+  localStorage.setItem("bookmarks", JSON.stringify(state.bookmarks));
+};
+
 var addBookMark = function addBookMark(recipe) {
   // Add BookMark
   state.bookmarks.push(recipe); // Mark Current BookMark As BookMarked
 
-  if (recipe.id === state.recipe.id) state.recipe.bookMarked = true;
+  if (recipe.id === state.recipe.id) state.recipe.bookMarked = true; // Store the recipe into local store
+
+  persistBookmarks();
 };
 
 exports.addBookMark = addBookMark;
@@ -13430,10 +13659,87 @@ var deleteBookMark = function deleteBookMark(id) {
   });
   state.bookmarks.splice(index, 1); // Mark the current recipe as not bookmarked
 
-  if (id === state.recipe.id) state.recipe.bookMarked = false;
+  if (id === state.recipe.id) state.recipe.bookMarked = false; // Remove the recipe from local storage
+
+  persistBookmarks();
 };
 
 exports.deleteBookMark = deleteBookMark;
+
+var uploadRecipe = /*#__PURE__*/function () {
+  var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(newRecipe) {
+    var ingredients, recipe, data;
+    return regeneratorRuntime.wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.prev = 0;
+            ingredients = Object.entries(newRecipe).filter(function (entry) {
+              return entry[0].startsWith("ingredient") && entry[1] !== '';
+            }).map(function (ing) {
+              var ingArr = ing[1].split(",").map(function (el) {
+                return el.trim();
+              }); // const ingArr=ing[1].replaceAll(' ','').split(",");
+
+              if (ingArr.length !== 3) throw new Error("Wrong Ingredient Format");
+
+              var _ingArr = _slicedToArray(ingArr, 3),
+                  quantity = _ingArr[0],
+                  unit = _ingArr[1],
+                  description = _ingArr[2];
+
+              return {
+                quantity: quantity ? +quantity : null,
+                unit: unit,
+                description: description
+              };
+            });
+            recipe = {
+              title: newRecipe.title,
+              publisher: newRecipe.publisher,
+              image_url: newRecipe.image,
+              source_url: newRecipe.sourceUrl,
+              servings: +newRecipe.servings,
+              cooking_time: +newRecipe.cookingTime,
+              ingredients: ingredients
+            };
+            _context3.next = 5;
+            return (0, _helpers.sendJSON)("".concat(_config.API_URL, "?key=").concat(_config.KEY), recipe);
+
+          case 5:
+            data = _context3.sent;
+            state.recipe = createRecipeObject(data.data.recipe);
+            addBookMark(state.recipe);
+            console.log(data);
+            _context3.next = 14;
+            break;
+
+          case 11:
+            _context3.prev = 11;
+            _context3.t0 = _context3["catch"](0);
+            throw _context3.t0;
+
+          case 14:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, _callee3, null, [[0, 11]]);
+  }));
+
+  return function uploadRecipe(_x3) {
+    return _ref3.apply(this, arguments);
+  };
+}();
+
+exports.uploadRecipe = uploadRecipe;
+
+var init = function init() {
+  var storage = localStorage.getItem("bookmarks");
+  if (storage) state.bookmarks = JSON.parse(storage);
+};
+
+init();
 },{"./config":"src/js/config.js","./helpers":"src/js/helpers.js"}],"src/js/controller.js":[function(require,module,exports) {
 "use strict";
 
@@ -13448,6 +13754,8 @@ var _searchView = _interopRequireDefault(require("./views/searchView.js"));
 var _resultView = _interopRequireDefault(require("./views/resultView.js"));
 
 var _bookmarksView = _interopRequireDefault(require("./views/bookmarksView.js"));
+
+var _addRecipeView = _interopRequireDefault(require("./views/addRecipeView.js"));
 
 var _paginationView = _interopRequireDefault(require("./views/paginationView.js"));
 
@@ -13503,7 +13811,9 @@ var showRecipe = /*#__PURE__*/function () {
 
           case 7:
             // 2) RENDERING RECIPE
-            _recipeView.default.render(model.state.recipe); // controlServings()
+            _recipeView.default.render(model.state.recipe); // // 0) Update the bookmarks view
+            // bookmarksView.update(model.state.bookmarks)
+            // controlServings()
 
 
             _context.next = 13;
@@ -13614,7 +13924,62 @@ var controlAddBookMark = function controlAddBookMark() {
   _bookmarksView.default.render(model.state.bookmarks);
 };
 
+var controlBookmarks = function controlBookmarks() {
+  _bookmarksView.default.render(model.state.bookmarks);
+};
+
+var controlAddRecipe = /*#__PURE__*/function () {
+  var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(newRecipe) {
+    return regeneratorRuntime.wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.prev = 0;
+            _context3.next = 3;
+            return model.uploadRecipe(newRecipe);
+
+          case 3:
+            console.log(model.state.recipe); // Render Recipe
+
+            _recipeView.default.render(model.state.recipe); // Render bookmarks View
+
+
+            _bookmarksView.default.render(model.state.bookmarks); // Change the ID in the URL
+
+
+            window.history.pushState(null, "", "#".concat(model.state.recipe.id)); // Close Form Window
+
+            setTimeout(function () {
+              _addRecipeView.default.toggleWindow();
+            }, 2500);
+            _context3.next = 14;
+            break;
+
+          case 10:
+            _context3.prev = 10;
+            _context3.t0 = _context3["catch"](0);
+            console.log(_context3.t0.message);
+
+            _addRecipeView.default.renderError(_context3.t0.message);
+
+          case 14:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, _callee3, null, [[0, 10]]);
+  }));
+
+  return function controlAddRecipe(_x) {
+    return _ref3.apply(this, arguments);
+  };
+}();
+
 var init = function init() {
+  _bookmarksView.default.addHandlerRender(controlBookmarks);
+
+  _addRecipeView.default.addHandlerUpload(controlAddRecipe);
+
   _recipeView.default.addHandlerRender(showRecipe);
 
   _recipeView.default.addHandlerUpdateServings(controlServings);
@@ -13627,7 +13992,7 @@ var init = function init() {
 };
 
 init();
-},{"regenerator-runtime/runtime":"node_modules/regenerator-runtime/runtime.js","core-js/stable":"node_modules/core-js/stable/index.js","./views/recipeView.js":"src/js/views/recipeView.js","./views/searchView.js":"src/js/views/searchView.js","./views/resultView.js":"src/js/views/resultView.js","./views/bookmarksView.js":"src/js/views/bookmarksView.js","./views/paginationView.js":"src/js/views/paginationView.js","./model.js":"src/js/model.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"regenerator-runtime/runtime":"node_modules/regenerator-runtime/runtime.js","core-js/stable":"node_modules/core-js/stable/index.js","./views/recipeView.js":"src/js/views/recipeView.js","./views/searchView.js":"src/js/views/searchView.js","./views/resultView.js":"src/js/views/resultView.js","./views/bookmarksView.js":"src/js/views/bookmarksView.js","./views/addRecipeView.js":"src/js/views/addRecipeView.js","./views/paginationView.js":"src/js/views/paginationView.js","./model.js":"src/js/model.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -13655,7 +14020,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62963" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63324" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

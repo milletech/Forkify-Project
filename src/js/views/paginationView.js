@@ -12,7 +12,7 @@ class PaginationView extends View{
 
             const goToPage=+btn.dataset.goto;
 
-            console.log(goToPage)
+            // console.log(goToPage)
 
             handler(goToPage)
         })
@@ -20,7 +20,7 @@ class PaginationView extends View{
     _generateMarkUp(){
         const numPages=Math.ceil(this._data.results.length/ this._data.resultsPerPage);
         const curPage=this._data.page;
-        console.log(numPages)
+        // console.log(numPages)
 
         // Page 1, and there are other Pages
 
